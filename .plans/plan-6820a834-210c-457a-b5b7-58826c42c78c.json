@@ -1,0 +1,45 @@
+{
+  "uuid": "6820a834-210c-457a-b5b7-58826c42c78c",
+  "name": "Scraper Source Decision",
+  "details": "Session plan: Analyze llms.txt vs llms-full.txt sources, decide on optimal directory structure and filenaming for scraper output.",
+  "tasks": [
+    {
+      "name": "Analyze Sources",
+      "details": "Compare llms.txt vs llms-full.txt formats and trade-offs",
+      "status": "completed",
+      "priority": "high",
+      "uuid": "52699143-7a2b-41ec-98da-b79487aff097",
+      "created_at": "2025-12-27T22:01:50.336Z",
+      "updated_at": "2025-12-27T22:01:50.336Z"
+    },
+    {
+      "name": "Evaluate Structure",
+      "details": "Review current flat underscore structure vs hierarchical options",
+      "status": "completed",
+      "priority": "high",
+      "uuid": "ceb20f58-6101-4679-8b32-a48aa2ee19aa",
+      "created_at": "2025-12-27T22:01:50.336Z",
+      "updated_at": "2025-12-27T23:01:05.860Z"
+    },
+    {
+      "name": "Discuss Decisions",
+      "details": "Present findings and get janbam's input on source selection and directory structure",
+      "status": "completed",
+      "priority": "high",
+      "uuid": "93c370c5-679c-48db-9d0c-15afffd4459f",
+      "created_at": "2025-12-27T22:01:50.336Z",
+      "updated_at": "2025-12-27T23:01:06.028Z"
+    },
+    {
+      "name": "Update Scraper",
+      "details": "Modify scrape-all-docs.sh based on decisions",
+      "status": "pending",
+      "priority": "medium",
+      "uuid": "99fb69c9-4b6c-4a92-8c29-2be37f13358f",
+      "created_at": "2025-12-27T22:01:50.336Z",
+      "updated_at": "2025-12-27T22:01:50.336Z"
+    }
+  ],
+  "created_at": "2025-12-27T22:01:50.336Z",
+  "updated_at": "2025-12-27T23:02:24.302Z"
+}

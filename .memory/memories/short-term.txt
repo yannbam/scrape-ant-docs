@@ -1,0 +1,37 @@
+# Session 44ee1bff - 2025-12-28
+
+## What Was Accomplished
+
+1. **Onboarding complete** - analyzed project structure, llms-txt-sources/, scraped-docs/
+
+2. **Source comparison** (via 2 Opus agents):
+   - llms.txt vs llms-full.txt: llms.txt preserves section structure, is complete
+   - llms-full.txt loses section groupings, missing 1 doc on platform
+   - Content semantically identical but formatted differently
+
+3. **Decision: Use llms.txt** for URL extraction
+
+4. **Directory structure decisions documented**:
+   - platform: use URL paths directly (strip /docs/en/)
+   - mcp: use URL paths directly (keep version dates)
+   - code: derive from docs_map.md sections, unmapped→misc/
+   - Only keep Python + TypeScript SDK examples (skip go/java/kotlin/ruby)
+
+5. **Created SCRAPER-SPEC.md** - complete implementation specification
+
+## Next Steps
+
+- Implement scraper based on SCRAPER-SPEC.md
+- The remaining plan task: "Update Scraper" (see plan "Scraper Source Decision")
+
+## Repository State
+
+- SCRAPER-SPEC.md: NEW (uncommitted)
+- .plans/: updated (uncommitted)
+- scrape-all-docs.sh: old version, needs rewrite
+
+## Key Files
+
+- SCRAPER-SPEC.md - implementation spec (START HERE)
+- llms-txt-sources/ - raw source files for reference
+- scraped-docs/ - output from old scraper (will be replaced)
