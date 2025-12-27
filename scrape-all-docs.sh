@@ -15,6 +15,12 @@ echo "🚀 Anthropic Documentation Scraper"
 echo "Output directory: $OUTPUT_DIR"
 echo ""
 
+# Clean up any existing output
+if [ -d "$OUTPUT_DIR" ]; then
+    echo "🧹 Purging existing output directory..."
+    rm -rf "$OUTPUT_DIR"
+fi
+
 # -----------------------------------------------------------------------------
 # 1. Platform Claude (Anthropic API/SDK docs)
 # -----------------------------------------------------------------------------
@@ -71,7 +77,23 @@ echo ""
 echo "📚 [3/3] Scraping code.claude.com (Claude Code docs)..."
 mkdir -p "$OUTPUT_DIR/code-claude-com"
 
-## TO BE IMPLEMENTED
+CODE_URLS=$(curl -sL "https://code.claude.com/docs/llms.txt" | grep -oP 'https://code\.claude\.com/docs/en/[^)]+\.md')
+CODE_COUNT=$(echo "$CODE_URLS" | wc -l)
+echo "   Found $CODE_COUNT pages"
+
+i=0
+echo "$CODE_URLS" | while read -r url; do
+    i=$((i + 1))
+    # Convert URL path to filename: /docs/en/hooks.md → hooks.md
+    filename=$(echo "$url" | sed 's|https://code.claude.com/docs/en/||')
+
+    if curl -sL "$url" -o "$OUTPUT_DIR/code-claude-com/$filename" --fail 2>/dev/null; then
+        echo "   [$i/$CODE_COUNT] ✓ $filename"
+    else
+        echo "   [$i/$CODE_COUNT] ✗ FAILED: $filename"
+    fi
+done
+echo -e "   ${GREEN}✓ Claude Code docs complete${NC}"
 
 # -----------------------------------------------------------------------------
 # Summary
