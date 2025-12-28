@@ -129,7 +129,7 @@ def main() -> int:
     output_dir = Path(args[0])
 
     print("Anthropic Documentation Scraper")
-    print(f"Output: {output_dir}/\n")
+    print(f"Output: {output_dir.resolve()}/\n")
 
     # Purge only our specific directories (not the entire output dir)
     for dir_name in SOURCE_DIRS:
@@ -198,6 +198,7 @@ def main() -> int:
     for name, ok, fail, skip in results:
         print(f"  {name}: {ok} OK, {fail} FAIL, {skip} SKIP")
     print(f"\nTOTAL: {totals['ok']} OK, {totals['fail']} FAIL, {totals['skip']} SKIP")
+    print(f"Output: {output_dir.resolve()}/")
 
     # Verify no empty files
     empty_files = [f for f in output_dir.rglob("*.md") if f.stat().st_size == 0]
