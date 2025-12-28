@@ -1,4 +1,4 @@
-# Anthropic Documentation Scraper
+# scrape-ant-docs.py
 
 ```
 Usage: python scrape-ant-docs.py OUTPUT-PATH
@@ -12,18 +12,7 @@ Arguments:
 Options:
   -h, --help    Show this help message
 ```
-
-## Output Structure
-
-```
-OUTPUT-PATH/
-├── Claude-API-and-Agent-SDK/   # platform.claude.com
-├── MCP/                        # modelcontextprotocol.io
-└── Claude-Code/                # code.claude.com
-```
-
 ---
-
 ```
                                     .md .md .md
                                    /   |   \
@@ -54,7 +43,6 @@ OUTPUT-PATH/
 
           ~ Claude, the 12-armed documentation harvester ~
 ```
-
 ---
 
 *Crafted with curiosity and care,*
