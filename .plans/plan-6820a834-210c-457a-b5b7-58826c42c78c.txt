@@ -1,8 +1,0 @@
-🌳 "Scraper Source Decision"
-📝 Session plan: Analyze llms.txt vs llms-full.txt sources, decide on optimal directory structure and filenaming for scraper output.
-📊 ███████░░░ 75% (3/4 tasks)
-
-├── ✅ |Analyze Sources| "Compare llms.txt vs llms-full.txt formats and trade-offs" (🔴)
-├── ✅ |Evaluate Structure| "Review current flat underscore structure vs hierarchical options" (🔴)
-├── ✅ |Discuss Decisions| "Present findings and get janbam's input on source selection and directory structure" (🔴)
-└── ⏸️ |Update Scraper| "Modify scrape-all-docs.sh based on decisions" (🟡)

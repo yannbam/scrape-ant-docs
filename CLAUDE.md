@@ -6,31 +6,35 @@ Scrape all available Anthropic documentation into a local copy with a directory 
 
 The goal: Claude can run `ls` on the scraped output, see the structure and filenames, and know exactly where to find specific documentation without grep/search guesswork.
 
-## Current State
+## Usage
 
-**Scraper needs reimplementation** based on new specification.
+```bash
+python scrape-ant-docs.py OUTPUT-PATH
+python scrape-ant-docs.py --help
+```
 
-- `SCRAPER-SPEC.md` - **Complete implementation specification** (all decisions made)
-- `scrape-all-docs.sh` - Old version, needs rewrite per spec
-- `scraped-docs/` - Old output (will be replaced)
-- `llms-txt-sources/` - Raw source files for reference
+## Output Structure
 
-## Key Decisions (documented in SCRAPER-SPEC.md)
-
-1. **Source**: Use `llms.txt` (not llms-full.txt) - preserves section structure
-2. **Directory structure**: Hierarchical, lowercase-hyphenated
-3. **platform.claude.com**: Use URL paths, filter to Python+TypeScript SDKs only
-4. **modelcontextprotocol.io**: Use URL paths directly (keep version dates)
-5. **code.claude.com**: Derive directories from docs_map.md sections, unmapped→misc/
-
-## Next Task
-
-Implement scraper per `SCRAPER-SPEC.md`.
+```
+OUTPUT-PATH/
+  Claude-API-and-Agent-SDK/   # platform.claude.com (Python+TypeScript SDKs only)
+  MCP/                        # modelcontextprotocol.io
+  Claude-Code/                # code.claude.com
+```
 
 ## Sources
 
-| Site | Index | Full Content |
-|------|-------|--------------|
-| platform.claude.com | llms.txt (55K) | llms-full.txt (27M) |
-| modelcontextprotocol.io | llms.txt (5K) | llms-full.txt (848K) |
-| code.claude.com | llms.txt (8K) | llms-full.txt (651K) |
+| Site | Output Dir | Index URL |
+|------|------------|-----------|
+| platform.claude.com | Claude-API-and-Agent-SDK | llms.txt |
+| modelcontextprotocol.io | MCP | llms.txt |
+| code.claude.com | Claude-Code | llms.txt |
+
+## Implementation Notes
+
+- Fetches URLs from each site's `llms.txt` index
+- Filters platform.claude.com to Python+TypeScript SDKs only (skips Go/Java/Kotlin/Ruby)
+- Uses `docs_map.md` to organize Claude-Code docs into sections
+- Purges only our directories on re-run (safe for shared output dirs)
+- Line-buffered output for real-time progress when piped
+- Graceful CTRL-C handling
