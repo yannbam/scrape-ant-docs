@@ -27,7 +27,10 @@ SOURCES=(
 # code.claude.com additionally needs:
 DOCS_MAP_URL="https://code.claude.com/docs/en/claude_code_docs_map.md"
 
-# SDK language filter (optional policy, not data)
+# Language filter 
+
+From the different language examples on platform.claude.com only keep Python and Typescript
+
 SDK_KEEP_LANGS="python|typescript"  # Set to ".*" to keep all
 ```
 
